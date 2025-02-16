@@ -7,4 +7,6 @@
 main() {
   int? score; // = 20; // for assign value i understand now the different
   print('No score');
+
+  // the vs format the code >> i know the different soo well <3
 }
