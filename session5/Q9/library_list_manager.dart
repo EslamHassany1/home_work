@@ -9,34 +9,38 @@ Implement a Library class with methods:
 Ensure that the system correctly updates the book's availability.
  */
 
-class Book{
- final String title;
- final String author;
- final String isbn;
-  bool isAvailable ;
-  Book({required this.title , required this.author, required this.isbn , this.isAvailable=false});
-}
+
+
+import 'book.dart';
 
 class LibraryListManager{
- final List<Book>booksList =[];
+ final List<Book>_booksList =[];
+
+
   void addBook({required Book book }){
-   booksList.add(book);
+   _booksList.add(book);
+   book.isAvailable=true;
   }
-  void removeBook({required Book book  }){
+
+
+  /* void removeBook({required String title  }){
     for(Book item in booksList){
-      if(item.title == book.title){
+      if(item.title == title){
         booksList.remove(item);
+        print("deleted");
       }
     }
   }
+*/
 
  bool borrowBook({required String asbn }){
-    for(Book item in booksList){
+    for(Book item in _booksList){
       if(item.isbn == asbn){
         if(item.isAvailable ){
           item.isAvailable=false;
           return true;
         }else{
+          print("its out");
           return false;
         }
       }
@@ -45,7 +49,7 @@ class LibraryListManager{
   }
 
   bool returnBook({required String asbn }){
-    for(Book item in booksList){
+    for(Book item in _booksList){
       if(item.isbn == asbn){ // لو الكتاب موجود
         if(item.isAvailable == false ){ // المفروض الحالة بتاعته فولص لانه طلع استعارة
           item.isAvailable=true; /// رجعها ترو تاني
@@ -55,24 +59,34 @@ class LibraryListManager{
     }
     return false ; // الكتاب دا مش من عندنا يا ابله
   }
-  searchByTitle({required String title }){
-    for(var item in booksList){
-      if(item.title == title){
-        print("Is Found");
-      }else{
-        print("Not Found");
-      }
 
+  searchByTitle({required String title }){
+    bool found = false;
+    for(var item in _booksList){
+      if(item.title.contains(title)){
+        print("Is Found");
+        found=true;
+      }
     }
+if (!found) {
+
+     print("Not Found");
+
+   }
   }
 
+  displaylibrary(){
+    _booksList.forEach((element){
+      print("${element.title},${element.author}, ${element.isAvailable}");
+    });
+
+  }
+
+ }
 
 
 
-}
 
-main(){
 
- 
-}
+
 
