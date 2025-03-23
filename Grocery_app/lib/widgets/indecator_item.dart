@@ -17,10 +17,10 @@ class IndicatorItem extends StatelessWidget {
       children: List.generate(itemCount, (index) {
         return Container(
           margin: const EdgeInsets.symmetric(horizontal: 4.0),
-          width: 8.0,
+          width: 20.0,
           height: 8.0,
           decoration: BoxDecoration(
-            shape: BoxShape.circle,
+            borderRadius: BorderRadius.circular(20),
             color:
                 currentIndex == index
                     ? Colors.green

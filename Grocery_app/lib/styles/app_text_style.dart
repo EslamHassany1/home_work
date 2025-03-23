@@ -9,9 +9,10 @@ class AppTextStyles {
   );
 
   static const TextStyle bold16 = TextStyle(
-    fontWeight: FontWeight.w800, // Regular
+    fontWeight: FontWeight.w700, // Regular
     fontSize: 16,
     color: Colors.black,
+    fontFamily: poppinsFamily,
   );
 
   static const TextStyle regular16 = TextStyle(

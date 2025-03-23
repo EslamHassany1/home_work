@@ -1,5 +1,6 @@
 import 'package:final_grocery_app/constants/assets.dart';
 import 'package:final_grocery_app/model/onboarding_model.dart';
+import 'package:final_grocery_app/styles/app_colors.dart';
 import 'package:final_grocery_app/widgets/custom_button.dart';
 import 'package:final_grocery_app/widgets/indecator_item.dart';
 import 'package:final_grocery_app/widgets/onboarding_item.dart';
@@ -53,19 +54,37 @@ class _OnboardingViewState extends State<OnboardingView> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  CustomBtn(
-                    onTap:
-                        () => {
-                          setState(() {
-                            if (index < items.length - 1) {
-                              index++;
-                            } else {
-                              index = 0;
-                            }
-                          }),
-                        },
-                    title: "NEXT",
-                  ),
+                  index == items.length - 1
+                      ? Column(
+                        children: [
+                          CustomBtn(
+                            btnColor: Colors.black,
+                            textColor: Colors.white,
+                            title: "Create AN Account ",
+                            onTap: () {},
+                          ),
+                          SizedBox(height: 10),
+                          CustomBtn(
+                            btnColor: Colors.white,
+                            textColor: Colors.black,
+                            title: "LOGIN ",
+                            onTap: () {},
+                          ),
+                        ],
+                      )
+                      : CustomBtn(
+                        btnColor: AppColors.primaryColor,
+                        textColor: Colors.black,
+                        onTap:
+                            () => {
+                              setState(() {
+                                if (index < items.length - 1) {
+                                  index++;
+                                }
+                              }),
+                            },
+                        title: "NEXT",
+                      ),
                 ],
               ),
             ),
