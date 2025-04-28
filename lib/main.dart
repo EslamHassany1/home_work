@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:news_app_ui_setup/screens/home_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_app/cubit/notes_cubit.dart';
+import 'package:note_app/views/home.dart';
 
 void main() {
-  runApp(const NewsApp());
+  runApp(const MyApp());
 }
 
-class NewsApp extends StatelessWidget {
-  const NewsApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+    return BlocProvider(
+      create: (context) => TasksCubit(),
+      child: MaterialApp(home: HomeView()),
     );
   }
 }
