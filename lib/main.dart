@@ -1,20 +1,22 @@
+import 'package:final_grocery_app/styles/app_text_style.dart';
+import 'package:final_grocery_app/views/create_account_view.dart';
+import 'package:final_grocery_app/views/splash.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_app/cubit/notes_cubit.dart';
-import 'package:note_app/views/home.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const GroceryApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class GroceryApp extends StatelessWidget {
+  const GroceryApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => TasksCubit(),
-      child: MaterialApp(home: HomeView()),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const CreateAccountScreen(),
+      theme: ThemeData(fontFamily: AppTextStyles.poppinsFamily),
     );
   }
 }
